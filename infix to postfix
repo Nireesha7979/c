@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+char stack[100];
+int top=-1;
+int getpriority(char);
+int isoperator(char);
+void push(char);
+void pop();
+int main(){
+    char arr[100];
+    int n,i;
+    scanf("%s",arr);
+    n=strlen(arr);
+    for(i=0;i<n;i++){
+    if (isoperator==0){
+        printf("%c",arr[i]);
+    }
+    else{
+        while(getpriority(arr[i])<=getpriority(stack[top]) &&(top!=-1)){
+            pop();
+        }
+        push(arr[i]);
+        }   
+    }
+    while(top>=0){
+        pop();
+    } 
+    return 0;
+}
+int isoperator(char ch){
+    if(ch=='+'||ch=='-'||ch=='*'||ch=='/'){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+void push(char ch){
+    top++;
+    stack[top]=ch;
+}
+int getpriority(char ch){
+    switch(ch){
+        case '-': return 1;
+                  break;
+        case '+': return 2;
+                  break;
+        case '*': return 3;
+                  break;
+        case '/': return 4;
+                  break;  
+    }
+}
+void pop(){
+    printf("%c",stack[top]);
+    top--;
+}
