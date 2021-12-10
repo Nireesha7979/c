@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+void max_priority(int [],int[],int);
+void min_priority(int [],int [],int n);
+int main(){
+int a[100],b[100];
+int pqueue[100];
+int n,i,j;
+printf("No.of elements");
+scanf("%d",&n);
+printf("enter the values");
+for(i=0;i<n;i++){
+    scanf("%d",&a[i]);
+}
+printf("enter respective priorities");
+for(j=0;j<n;j++){
+    scanf("%d",&b[j]);
+}
+max_priority(a,b,n);
+min_priority(a,b,n);
+return 0;
+}
+void max_priority(int a[],int b[],int n){
+    int t,c,i,j;
+      for(j=0;j<n;j++){
+          for(i=j+1;i<n;i++){
+              if(b[j]<b[i]){
+                    t=b[i];
+                    b[i]=b[j];
+                    b[j]=t;
+                    c=a[i];
+                    a[i]=a[j];
+                    a[j]=c;
+              }
+          }
+      }
+    printf("\nmax priority order is:");
+for(i=0;i<n;i++){
+    printf("%d\t",a[i]);
+}
+}
+void min_priority(int a[],int b[],int n){
+    int t,c,i,j;
+      for(j=0;j<n;j++){
+          for(i=j+1;i<n;i++){
+              if(b[j]>b[i]){
+                    t=b[i];
+                    b[i]=b[j];
+                    b[j]=t;
+                    c=a[i];
+                    a[i]=a[j];
+                    a[j]=c;
+              }
+          }
+    }
+    printf("\nmin priority order is:");
+    for(i=0;i<n;i++){
+    printf("%d\t",a[i]);
+}
+}
+    
