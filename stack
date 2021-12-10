@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+int top =-1;
+int stack[100];
+int push(int);
+void pop();
+void display();
+int main(){
+    int input,a,stack[100];
+    do{
+    printf("select an option :\t1.push \t2.pop\t3.display\t4.exit\n");
+    scanf("%d",&input);
+    switch(input){
+        case 1: printf("enter the element to insert :");
+                scanf("%d",&a);
+                push(a);
+                break;
+        case 2: pop();
+                break;
+        case 3: display();
+                break;
+        case 4: exit(0);
+        default: printf("enter valid option\n");
+        
+    }
+    
+    }while(1);
+    return 0;
+}
+int push(int a){
+    int n;//n is the size of the stack
+    if(top<n){
+         top++;
+        stack[top]=a;
+        return 1;
+    }
+    else{
+        printf("stack is full\n");
+    }
+}
+void pop(){
+    int c;
+    if(top<0){
+        printf("no elements are present in the stack\n");
+    }
+    else {
+        c=stack[top];
+        stack[top]=0;
+        top--;
+        printf("The element deleted is %d\n",c);
+    }
+}
+void display(){
+    int i;
+    printf("The elements are :");
+    for(i=0;i<=top;i++){
+        printf("%d\t",stack[i]);
+    }
+}
