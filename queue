@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+int front =0;
+int rear =-1;
+int queue[100];
+int insert(int);
+void delete();
+void print();
+int main(){
+    int i,input,c;
+    do{
+        printf("Select an option:1.Insert\t2.delete\t3.print\t4.exit\n");
+        scanf("%d",&input);
+        switch(input){
+            case 1: printf("Enter an element to insert:\n");
+                    scanf("%d",&c);
+                    insert(c);
+                    break;
+            case 2: delete();
+                    break;
+            case 3: print();
+                    break;
+            case 4: exit(0);
+            default:printf("enter valid option");
+        }
+    }while(1);
+    return 0;
+}
+int insert(int a){
+    int n;//n is the size of the queue
+    n=100;
+    if(rear<n){
+        ++rear;
+        queue[rear]=a;
+    }
+    else{
+        printf("Queue is full\n");
+    }
+}
+void delete(){
+    if(rear==-1){
+        printf("No elements in the Queue\n");
+    }
+    else{
+        int d;
+        d=queue[rear];
+        queue[rear]=0;
+        rear--;
+        printf("The element deleted is %d\n",d);
+    }
+}
+void print(){
+    int i;
+    printf("The elements are:");
+    for(i=0;i<=rear;i++){
+        printf("%d\t",queue[i]);
+    }
+}
